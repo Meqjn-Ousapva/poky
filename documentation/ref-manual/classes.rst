@@ -1855,7 +1855,8 @@ a couple different ways:
       Not using this naming convention can lead to subtle problems
       caused by existing code that depends on that naming convention.
 
--  Create or modify a target recipe that contains the following::
+-  Or, create a :ref:`ref-classes-native` variant of any target recipe (e.g.
+   ``myrecipe.bb``) by adding the following to the recipe::
 
       BBCLASSEXTEND = "native"
 
@@ -1886,7 +1887,18 @@ couple different ways:
    inherit statement in the recipe after all other inherit statements so
    that the :ref:`ref-classes-nativesdk` class is inherited last.
 
--  Create a :ref:`ref-classes-nativesdk` variant of any recipe by adding the following::
+   .. note::
+
+      When creating a recipe, you must follow this naming convention::
+
+              nativesdk-myrecipe.bb
+
+
+      Not doing so can lead to subtle problems because there is code that
+      depends on the naming convention.
+
+-  Or, create a :ref:`ref-classes-nativesdk` variant of any target recipe (e.g.
+   ``myrecipe.bb``) by adding the following to the recipe::
 
        BBCLASSEXTEND = "nativesdk"
 
@@ -1894,16 +1906,6 @@ couple different ways:
    recipe, use ``:class-nativesdk`` and ``:class-target`` overrides to
    specify any functionality specific to the respective SDK machine or
    target case.
-
-.. note::
-
-   When creating a recipe, you must follow this naming convention::
-
-           nativesdk-myrecipe.bb
-
-
-   Not doing so can lead to subtle problems because there is code that
-   depends on the naming convention.
 
 Although applied differently, the :ref:`ref-classes-nativesdk` class is used with both
 methods. The advantage of the second method is that you do not need to
